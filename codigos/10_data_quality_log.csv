@@ -1,0 +1,12 @@
+file,column,null_count,null_pct
+segments,pavement_year,1,6.7
+segments,last_overlay_year,9,60.0
+segments,notes,8,53.3
+segments,pavement_age_years,1,6.7
+segments,years_since_overlay,9,60.0
+repairs,notes,25,83.3
+rainfall,notes,61,92.4
+traffic,notes,15,68.2
+complaints,resolution_date,3,9.1
+complaints,days_to_resolve,3,9.1
+complaints,notes,24,72.7

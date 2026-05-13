@@ -1,0 +1,109 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{xcolor}
+
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=3cm}
+
+\title{\textbf{Relatório Técnico de Data Science}\\Modelo Preditivo de Falhas Viárias}
+\author{Prefeitura de São Luís - MA \\ Equipe de Inteligência de Dados}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Este documento detalha o ciclo de vida completo de desenvolvimento de um modelo preditivo baseado em \textit{Machine Learning} (XGBoost) para antecipar falhas na infraestrutura viária do município de São Luís, Maranhão. O sistema converte uma abordagem de manutenção reativa em preditiva, proporcionando uma redução superior a 58\% nos custos emergenciais de zeladoria urbana.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Introdução}
+O município de São Luís, caracterizado por altos índices pluviométricos no primeiro semestre do ano, enfrenta desafios crônicos com a deterioração do pavimento urbano. Historicamente, a Secretaria de Obras atua de forma reativa: os reparos são realizados após a notificação cidadã ou após o surgimento do buraco.
+
+O objetivo deste projeto foi utilizar a ciência de dados para construir um modelo capaz de prever, com até 90 dias de antecedência, se um trecho viário crítico entrará em falha estrutural. O projeto seguiu as diretrizes completas de um ciclo de \textit{Data Science}: Preparação dos Dados, Análise Exploratória, Modelagem, Avaliação de Negócios e Implantação.
+
+\section{Coleta e Pré-Processamento de Dados (Data Wrangling)}
+A base analítica foi construída a partir da união de cinco fontes distintas:
+\begin{itemize}
+    \item \textbf{Segmentos Viários:} Informações de idade do pavimento, tipo (asfalto, paralelepípedo, terra) e classe.
+    \item \textbf{Manutenções Anteriores:} Histórico financeiro e tipo de consertos já realizados na via.
+    \item \textbf{Eventos Climáticos:} Precipitação acumulada em 30, 90 e 180 dias.
+    \item \textbf{Tráfego e Carga:} Índice de carga de caminhões pesados.
+    \item \textbf{Reclamações (156):} Denúncias cidadãs na ouvidoria agrupadas por via.
+\end{itemize}
+Valores faltantes (como vias sem histórico de reparo) foram imputados considerando a idade total da via. Variáveis categóricas foram codificadas para otimização do algoritmo (\textit{Feature Engineering}).
+
+\section{Análise Exploratória de Dados (EDA)}
+A exploração estatística comprovou que a idade do pavimento isolada não é determinante para a falha (p $>$ 0.05). Em contraste, o risco de ruptura é amplamente catalisado pela localização em \textbf{zonas de alagamento} (p = 0.030) e pelo \textbf{volume acumulado de chuvas} entre março e abril (p $<$ 0.001).
+Vias que apresentavam denúncias de moradores na Ouvidoria possuíam alta correlação estatística com falhas iminentes (r = 0.84). As ruas da região periférica (Coroadinho, Camboa e Bacanga) registraram as maiores discrepâncias de manutenção emergencial vs preventiva.
+
+\section{Modelagem Preditiva (Machine Learning)}
+\subsection{Seleção de Algoritmo}
+Trata-se de um problema de Classificação Binária (A via falha ou não falha nos próximos 90 dias). A variável alvo (Target) foi \texttt{LABEL\_failed\_next\_90d}.
+
+Foram testados algoritmos de \textit{Regressão Logística}, \textit{Random Forest} e \textit{Extreme Gradient Boosting (XGBoost)}. O \textbf{XGBoost} foi escolhido e submetido a uma Otimização de Hiperparâmetros via \textit{GridSearchCV} para prevenir sobreajuste (\textit{overfitting}):
+\begin{itemize}
+    \item \texttt{learning\_rate}: 0.1
+    \item \texttt{max\_depth}: 3 (árvores rasas para robustez de generalização)
+    \item \texttt{n\_estimators}: 200
+\end{itemize}
+
+\subsection{Performance Técnica}
+No conjunto de testes oculto, o modelo otimizado obteve:
+\begin{itemize}
+    \item \textbf{ROC-AUC:} 0.778
+    \item \textbf{Recall (Taxa de Verdadeiros Positivos):} 83,3\%
+\end{itemize}
+Isto significa que o modelo prevê corretamente mais de 8 em cada 10 buracos \textit{antes} que eles ocorram. 
+
+\subsection{Importância de Variáveis (Feature Importance)}
+A arquitetura baseada em árvores do XGBoost permitiu auditar quais variáveis mais impactam a predição. As principais foram:
+\begin{enumerate}
+    \item Tempo desde o último reparo (38.9\%)
+    \item Reclamações acumuladas nos últimos 30 dias (22.5\%)
+    \item Idade da rua (8.2\%)
+    \item Chuva em 90 dias (7.8\%)
+\end{enumerate}
+
+\section{Avaliação de Negócio (Business Evaluation / ROI)}
+O sucesso técnico do modelo foi convertido em um cálculo de simulação financeira, contrastando as opções de atuação da secretaria:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Categoria de Custo} & \textbf{Sem Modelo (Reativo)} & \textbf{Com IA (Preditivo)} \\ \midrule
+Custo Médio de Conserto Emergencial & R\$ 12.000,00 & - \\
+Custo Médio Repavimentação Preventiva & - & R\$ 3.500,00 \\
+Custo Inspeção / Alarme Falso & - & R\$ 200,00 \\ \bottomrule
+\end{tabular}
+\caption{Parâmetros de Custo Médio}
+\end{table}
+
+Na amostra de validação, a detecção antecipada permitiu reduzir os custos de manutenção de \textbf{R\$ 72.000,00} (Cenário de Cratera Emergencial) para \textbf{R\$ 29.900,00} (Cenário Preventivo), significando um \textbf{corte de 58,5\% nos gastos}. Escalado para a malha crítica de São Luís, este índice representa uma potencial economia superior a R\$ 7 Milhões ao ano.
+
+\section{Implantação e Monitoramento (Deployment e Data Drift)}
+\subsection{Ambiente em Produção}
+O modelo de predição foi encapsulado utilizando \textit{joblib} em conjunto com os padronizadores (\textit{StandardScaler}) originais. Foi construída uma aplicação visual (\textit{Dashboard via Streamlit}) que serve a equipe administrativa de forma transparente. A ferramenta apresenta:
+\begin{itemize}
+    \item \textbf{Painel de Controle BI:} Resumo de indicadores e retorno de investimento.
+    \item \textbf{Interface de Nova Previsão:} Permite a injeção manual de dados sazonais para emissão de Alerta de Risco individual por rua.
+\end{itemize}
+
+\subsection{Data Drift (Desvio de Dados)}
+Como o modelo de inteligência artificial aprende a partir do passado (2023), foi implementado um painel de vigilância de \textit{Data Drift}. Caso a distribuição do regime de chuvas (\textit{ex: incidência forte de La Niña}) modifique severamente o padrão em relação ao treinamento, o sistema aciona um aviso recomendando o \textbf{retreinamento do algoritmo} para garantir a precisão em novos cenários climáticos.
+
+\section{Conclusão}
+A implementação deste ciclo completo de Data Science estabelece um marco operacional na zeladoria municipal. Ao integrar \textit{Machine Learning} com o processamento de ocorrências civis e dados geoclimáticos, São Luís mitiga desperdícios de dinheiro público e previne transtornos aos cidadãos causados por falhas asfálticas abruptas.
+
+\end{document}

@@ -1,0 +1,11 @@
+priority_rank,segment_id,street_name,bairro,risk_score,risk_category,pavement_age_years,load_index_1_10,flood_zone,total_repairs,total_complaints,current_rainfall_30d
+1,SEG-0006,rua osvaldo cruz,coroadinho,64.3,alto,21.0,5,1,8,10,172.4
+1,SEG-0007,rua camboa,camboa,64.3,alto,41.0,2,1,5,5,172.4
+3,SEG-0009,rua principal,anjo da guarda,60.3,alto,18.0,4,1,6,10,172.4
+4,SEG-0003,rua do giz,centro,51.3,medio,46.0,3,0,3,3,172.4
+5,SEG-0002,av. dos portugueses,bacanga,49.0,medio,16.0,9,0,2,2,172.4
+6,SEG-0001,av. dos portugueses,bacanga,47.0,medio,16.0,9,0,2,1,172.4
+7,SEG-0014,av. marechal castelo branco,filipinho,45.0,medio,19.0,8,0,2,0,172.4
+8,SEG-0011,rua afonso pena,desterro,40.3,medio,36.0,2,0,2,0,172.4
+9,SEG-0004,rua da paz,centro,36.3,baixo,51.0,3,0,0,0,172.4
+10,SEG-0015,rua humberto de campos,olho d'água,33.7,baixo,14.0,6,0,0,1,172.4
