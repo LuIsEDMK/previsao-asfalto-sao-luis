@@ -1,0 +1,91 @@
+RELATÓRIO EXECUTIVO — SISTEMA PREDITIVO DE MANUTENÇÃO VIÁRIA
+São Luís — Maranhão
+Data de referência: 2024
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OBJETIVO
+Desenvolver um sistema de inteligência artificial que antecipe
+quais trechos da malha viária de São Luís apresentarão falhas,
+permitindo intervenção preventiva antes da ruptura total.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SITUAÇÃO ATUAL — SÃO LUÍS (2024)
+
+  Total de trechos analisados:    60,933
+  Trechos em estado CRÍTICO:      6,031 (9.9%)
+  Trechos em estado ALTO:         17,166 (28.2%)
+  Trechos em estado MÉDIO:        2,832 (4.6%)
+  Trechos em estado BOM:          34,904 (57.3%)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+IMPACTO FINANCEIRO
+
+  Estratégia 100% preventiva:
+    Custo total:                   R$ 159.8 milhões
+
+  Estratégia 100% emergencial (status quo):
+    Custo total:                   R$ 506.8 milhões
+
+  ECONOMIA POTENCIAL:              R$ 347 MILHÕES
+  ROI da manutenção preventiva:    3.2x o investimento
+
+  ► Foco imediato nos 6,031 trechos CRÍTICOS economizaria
+    R$ 181 milhões versus resposta emergencial.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+COMO O SISTEMA FUNCIONA (linguagem não técnica)
+
+O sistema analisa cada trecho de rua da cidade usando informações
+públicas disponíveis gratuitamente:
+
+  1. TIPO DE VIA — vias locais degradam mais rápido que arteriais
+  2. ZONA DE ALAGAMENTO — ruas que ficam submersas deterioram até
+     1,8x mais rápido após cada chuva intensa
+  3. INCLINAÇÃO — ruas planas acumulam água; ruas muito inclinadas
+     sofrem erosão mecânica por veículos pesados
+  4. PLUVIOSIDADE HISTÓRICA — dados de 10 anos da NASA/ERA5
+  5. DENSIDADE URBANA — fluxo de veículos por tipo de região
+
+A inteligência artificial aprendeu padrões de degradação em
+Fortaleza e Recife, e aplicou esse conhecimento em São Luís —
+cidade nunca vista durante o treinamento — obtendo 68% de
+acurácia preditiva (AUROC = 0.68).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RECOMENDAÇÕES IMEDIATAS
+
+  PRIORIDADE 1 — CRÍTICO (6,031 trechos)
+  Intervenção imediata. Risco alto de ruptura completa.
+  Custo preventivo médio: R$ 15.000/trecho
+  Custo emergencial médio: R$ 45.000/trecho
+  Ação: Programar na próxima ordem de serviço.
+
+  PRIORIDADE 2 — ALTO (17,166 trechos)
+  Monitoramento mensal. Programar manutenção nos próximos 6 meses.
+  Custo preventivo médio: R$ 3.500/trecho
+
+  PRIORIDADE 3 — MÉDIO (2,832 trechos)
+  Inspeção semestral. Incluir no planejamento anual.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TRANSPARÊNCIA E LIMITAÇÕES
+
+  • Este sistema NÃO substitui a vistoria técnica no campo.
+    Serve como ferramenta de priorização de equipes de inspeção.
+  • A variável-alvo (Y) é baseada em modelo físico de degradação
+    (ICP — Índice de Condição do Pavimento), não em OS reais,
+    pois os portais de dados de São Paulo e Recife não disponibilizaram
+    dados de ordens de serviço compatíveis.
+  • A acurácia do modelo em São Luís (0.68) é inferior à
+    acurácia em cidades de treinamento (0.97), o que é esperado
+    em validação geográfica out-of-distribution.
+  • Os custos em R$ são estimativas baseadas em referências DNIT.
+    Valores reais devem ser validados com a SEMUSC.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

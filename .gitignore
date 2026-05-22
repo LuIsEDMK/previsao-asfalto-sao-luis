@@ -1,4 +1,52 @@
+# Cache e temporários
+cache_osmnx/
 __pycache__/
 *.pyc
-.ipynb_checkpoints/
+*.pyo
+.DS_Store
+Thumbs.db
+
+# Modelos antigos
+modelo_publico.pkl
+modelo_publico_v2.pkl
+modelo_publico_final.pkl
+
+# Dados simulados (pasta referência — não commitar CSVs)
+data/simulated/*.csv
+
+# CSVs grandes (> 50MB — gerar localmente)
+# Para regenerar: python src/08_build_training_dataset.py
+data/processed/06_risk_labels.csv
+data/processed/10_icp_y_labels.csv
+data/processed/11_training_dataset_final.csv
+
+# CSVs do pipeline antigo (duplicatas)
+csv/08_training_dataset_public.csv
+csv/08_training_dataset_v2.csv
+csv/11_training_dataset_final.csv
+csv/06_risk_labels.csv
+csv/10_icp_y_labels.csv
+
+# Dashboards antigos
+dashboard_public.html
+
+# Relatórios antigos
+relatorio_dados_publicos.txt
+motivo.txt
+
+# Ambientes virtuais
+venv/
+.venv/
+env/
 .env
+*.env
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Modelos (regenerar com: python src/09_train_final_model.py)
+# Comentar esta linha se quiser incluir modelo_final.pkl no repo
+# model/*.pkl
+
+# Arquivos codigos/ (mapeados para src/)
+# codigos/

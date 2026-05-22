@@ -1,0 +1,39 @@
+==============================================================
+  RELATÓRIO DE INVESTIGAÇÃO — PREDITOR FALHAS SÃO LUÍS
+==============================================================
+
+  INVESTIGAÇÃO 1 — FLOOD_ZONE:
+  Diagnóstico:          Contribuição moderada — flood_zone útil
+  AUROC sem flood:      0.620 (era 0.660 com flood)
+  Δ AUROC:              -0.040 (zona moderada, 0.02-0.05)
+  Correlação flood×Y:   0.208 (baixa — sem vazamento)
+  Ação tomada:          Y mantido (corr < 0.50)
+  flood_zone importância: 54.6% (mantida — discriminativa real)
+
+  INVESTIGAÇÃO 2 — GEOCODIFICAÇÃO OS:
+  OS processadas:       94 registros
+  Geocodificadas OK:    0 (dataset incompatível — zoneamento)
+  Vinculadas OSMnx:     0 segmentos
+  Y real disponível:    0% (abaixo de 500 necessários)
+
+  EVOLUÇÃO DO MODELO:
+  v1 (Y sintético):        AUROC WF=0.660  OOD=0.649
+  v2 (flood corrigido):    AUROC WF=0.660  OOD=0.649
+  v3 (Y real):             N/A — OS insuficientes para Y real
+  Melhor modelo:           v2 = v1 (Y mantido inalterado)
+
+  INTERPRETAÇÃO HONESTA:
+  O modelo aprende a distinguir segmentos por risco real de alagamento
+  (AUROC 0.620 sem flood confirma informação genuína), mas o Y sintético
+  impede validação de impacto real em falhas. A correlação 0.208 descarta
+  vazamento grave. Pode-se usar o modelo para TRIAGEM de segmentos de
+  alto risco para inspeção — não para previsão quantitativa de falhas.
+
+  PRÓXIMOS PASSOS:
+  1. Coletar OS reais via template Excel SEMUSC (priority 1)
+     → Mesmo 200 OS reais mudam a interpretabilidade do modelo
+  2. Baixar setores censitários IBGE por FTP para densidade intraurbana
+     → ftp.ibge.gov.br/Censos/Censo_Demografico_2022/
+  3. Usar py3dep + tiles SRTM locais para slope real (não grade 1.1km)
+     → Elimina outlier slope_pct=1371% e melhora feature de declividade
+==============================================================

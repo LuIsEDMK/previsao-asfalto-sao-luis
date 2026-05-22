@@ -1,0 +1,16 @@
+Data de download  : 2026-05-21 16:29:02
+Fonte             : open-meteo
+Metodo usado      : 3
+Estacao           : A203 Sao Luis MA
+Periodo           : 2015-01-01 a 2024-12-31
+Total de registros: 120 meses
+
+VALIDACAO CLIMATICA:
+  Media jan-jun > 200mm : OK
+  Media jul-dez < 200mm : OK
+  Sem valores negativos : OK
+  Sem meses > 700mm     : ALERTA
+
+OBSERVACOES:
+  Dados obtidos automaticamente via metodo 3.
+  Para validacao oficial, confrontar com BDMEP INMET (bdmep.inmet.gov.br).

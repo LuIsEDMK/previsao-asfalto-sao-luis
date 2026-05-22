@@ -1,0 +1,14 @@
+ATENÇÃO: Esta pasta contém dados SIMULADOS por IA
+gerados na fase inicial do projeto para estruturar
+o pipeline antes de obter dados reais.
+
+NÃO devem ser usados em análises reais.
+
+Os dados reais estão em:
+  data/processed/  → CSVs processados pelo pipeline real
+  data/raw/        → Dados brutos (Open-Meteo, etc.)
+
+Contexto:
+  Os arquivos simulados foram gerados em 2024 para testar
+  o pipeline de machine learning antes da coleta real de
+  dados públicos via OSMnx, Open-Meteo e NASA SRTM.

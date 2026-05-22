@@ -1,0 +1,28 @@
+======================================================
+  INVESTIGAÇÃO FLOOD_ZONE — RESULTADO
+======================================================
+
+  DIAGNÓSTICO:
+  Contribuição moderada — flood_zone útil mas não essencial
+
+  ABLATION STUDY (Walk-Forward, n_est=50):
+  AUROC com todas as features:  0.6597
+  AUROC sem flood_zone:          0.6204
+  Queda de performance:          +0.0393
+  AUROC apenas chuva:            0.5655
+  AUROC apenas via:              0.5726
+  AUROC apenas geográfico:       0.6355
+
+  CORRELAÇÃO flood_zone × Y: 0.2076
+  Diagnóstico Y:             Moderada — flood_zone não domina Y
+
+  AÇÃO TOMADA:
+  Y mantido inalterado (correlação abaixo de 0.50).
+
+  MODELO FINAL:
+  AUROC Walk-Forward v1:   0.6597 ± 0.0150
+  AUROC Walk-Forward v2:   0.6596 ± 0.0151
+  AUROC São Luís OOD v2:   0.6490
+  Feature mais importante: flood_zone_final (54.6%)
+  Flood_zone importância:  54.6% (era 54.6%)
+======================================================

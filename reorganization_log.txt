@@ -1,0 +1,73 @@
+REORGANIZAÇÃO DO REPOSITÓRIO
+============================================================
+
+  mkdir: data/raw/
+  mkdir: data/processed/
+  mkdir: data/simulated/
+  mkdir: src/
+  mkdir: notebooks/
+  mkdir: eda/
+  mkdir: model/
+  mkdir: reports/
+  mkdir: dashboard/
+  mkdir: assets/
+  mkdir: templates/
+  [OK]   03_rainfall_data.csv → data\raw\03_rainfall_data.csv
+  [OK]   03_rainfall_data_processed.csv → data\raw\03_rainfall_data_processed.csv
+  [OK]   03_rainfall_metadata.txt → data\raw\03_rainfall_metadata.txt
+  [OK]   01_road_network_osmnx.csv → data\processed\01_road_network_osmnx.csv
+  [OK]   02_elevation_slope.csv → data\processed\02_elevation_slope.csv
+  [OK]   03_flood_zones.csv → data\processed\03_flood_zones.csv
+  [OK]   04_urban_density.csv → data\processed\04_urban_density.csv
+  [OK]   05_rainfall_by_segment.csv → data\processed\05_rainfall_by_segment.csv
+  [OK]   07_public_repair_orders.csv → data\processed\07_public_repair_orders.csv
+  [OK]   12_metricas_final.csv → data\processed\12_metricas_final.csv
+  [OK]   12_shap_top5_sao_luis.csv → data\processed\12_shap_top5_sao_luis.csv
+  [OK]   13_previsoes_economicas_sao_luis.csv → data\processed\09_previsoes_sao_luis_FINAL.csv
+  [OK]   01_road_segments.csv → data\simulated\01_road_segments.csv
+  [OK]   01_road_segments_backup.csv → data\simulated\01_road_segments_backup.csv
+  [OK]   02_repair_history.csv → data\simulated\02_repair_history.csv
+  [OK]   02_repair_history_real.csv → data\simulated\02_repair_history_real.csv
+  [OK]   03_rainfall_data_SIMULADO_backup.csv → data\simulated\03_rainfall_data_SIMULADO_backup.csv
+  [OK]   04_traffic_load.csv → data\simulated\04_traffic_load.csv
+  [OK]   05_citizen_complaints.csv → data\simulated\05_citizen_complaints.csv
+  [OK]   06_ml_training_dataset.csv → data\simulated\06_ml_training_dataset.csv
+  [OK]   07_risk_scores.csv → data\simulated\07_risk_scores.csv
+  [OK]   07_public_repair_orders_geocoded.csv → data\simulated\07_public_repair_orders_geocoded.csv
+  [OK]   metricas_modelo_publico.csv → data\simulated\metricas_modelo_publico.csv
+  [OK]   metricas_v2.csv → data\simulated\metricas_v2.csv
+  [OK]   modelo_final.pkl → model\modelo_final.pkl
+  [OK]   feature_importance.png → model\feature_importance_final.png
+  [OK]   12_metricas_final.csv → model\metricas_final.csv
+  [OK]   decisoes_tecnicas.txt → reports\decisoes_tecnicas.txt
+  [OK]   investigate_flood_zone_report.txt → reports\investigate_flood_zone_report.txt
+  [OK]   relatorio_final_executivo.txt → reports\relatorio_final_executivo.txt
+  [OK]   relatorio_investigacao_final.txt → reports\relatorio_investigacao_final.txt
+  [OK]   relatorio_tecnico.tex → reports\relatorio_tecnico.tex
+  [OK]   dashboard_final.html → dashboard\dashboard_final.html
+  [OK]   Projeto_Predictivo.ipynb → notebooks\Projeto_Predictivo.ipynb
+  [OK]   make_notebook.py → notebooks\make_notebook.py
+  [OK]   template_os_semusc.xlsx → templates\template_os_semusc.xlsx
+  [OK]   import_os_semusc.py → templates\import_os_semusc.py
+  [OK]   fetch_road_network.py → src\01_fetch_road_network.py
+  [OK]   fetch_elevation.py → src\02_fetch_elevation.py
+  [OK]   fetch_flood_zones.py → src\03_fetch_flood_zones.py
+  [OK]   fetch_ibge_density.py → src\04_fetch_ibge_density.py
+  [OK]   fetch_rainfall_segments.py → src\05_fetch_rainfall_segments.py
+  [OK]   fetch_waze_alerts.py → src\06_fetch_waze_alerts.py
+  [OK]   fetch_public_os.py → src\07_fetch_public_os.py
+  [OK]   build_final_dataset.py → src\08_build_training_dataset.py
+  [OK]   train_final_model.py → src\09_train_final_model.py
+  [OK]   predict_sao_luis_final.py → src\10_predict_sao_luis.py
+  [OK]   build_dashboard_final.py → src\11_build_dashboard.py
+  [OK]   generate_final_docs.py → src\12_generate_docs.py
+  [OK]   pipeline_limpeza.py → src\pipeline_limpeza.py
+  [OK]   fix_coordinates.py → src\fix_coordinates.py
+  [OK]   fetch_inmet_real.py → src\fetch_inmet_real.py
+  [OK]   fetch_sao_paulo_os.py → src\fetch_sao_paulo_os.py
+  [OK]   fallback_y_real.py → src\fallback_y_real.py
+  [OK]   shap_analysis.py → src\shap_analysis.py
+  [OK]   relatorio_terminal.py → src\relatorio_terminal.py
+  [OK]   geocode_public_os.py → src\geocode_public_os.py
+  [OK]   data/simulated/LEIA-ME.txt criado
+  [OK]   .gitignore atualizado
